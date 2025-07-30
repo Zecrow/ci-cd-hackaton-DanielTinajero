@@ -1,4 +1,4 @@
-name: Deploy EC2 Instance with Terraform
+name: EC2 INTANCE BY DANIEL TINAJERO
 
 on:
   workflow_dispatch:
