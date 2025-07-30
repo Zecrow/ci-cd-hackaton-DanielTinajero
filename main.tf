@@ -50,6 +50,6 @@ resource "aws_instance" "web" {
   subnet_id     = aws_subnet.default_subnet.id
 
   tags = {
-    Name = "Mi instancia web"
+    Name = "Mi instancia web 2"
   }
 }
