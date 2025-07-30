@@ -30,16 +30,19 @@ data "aws_vpc" "selected_vpc" {
   }
 }
 
-resource "aws_subnet" "default_subnet" {
-  vpc_id                  = data.aws_vpc.selected_vpc.id
-  cidr_block              = "10.0.2.0/24"
-  availability_zone       = "${var.region}a"
-  map_public_ip_on_launch = true
 
-  tags = {
-    Name = "DefaultSubnet"
+data "aws_subnet" "default_subnet" {
+  filter {
+    name   = "cidrBlock"
+    values = ["10.0.1.0/24"]
+  }
+
+  filter {
+    name   = "vpc-id"
+    values = [aws_vpc.main.id]
   }
 }
+
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.latest_amazon_linux.id
